@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import glob
+import os
 
 package_name = 'smb_ui'
 
@@ -10,6 +12,10 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        # Include all launch files
+        (os.path.join('share', package_name, 'launch'), glob.glob(os.path.join('launch', '*.launch.py'))),
+        # Include all RViz config files
+        (os.path.join('share', package_name, 'rviz'), glob.glob(os.path.join('rviz', '*.rviz'))),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -19,7 +25,6 @@ setup(
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-        ],
+        'console_scripts': [],
     },
 )
