@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Frames1
         - /Point Clouds1
       Splitter Ratio: 0.5
     Tree Height: 549
@@ -151,7 +152,88 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz_common/Group
-      Displays: ~
+      Displays:
+        - Class: rviz_default_plugins/TF
+          Enabled: true
+          Filter (blacklist): ""
+          Filter (whitelist): ""
+          Frame Timeout: 15
+          Frames:
+            All Enabled: true
+            LF_WHEEL:
+              Value: true
+            LH_WHEEL:
+              Value: true
+            RF_WHEEL:
+              Value: true
+            RH_WHEEL:
+              Value: true
+            base_footprint:
+              Value: true
+            base_inertia:
+              Value: true
+            base_link:
+              Value: true
+            imu_link:
+              Value: true
+            imu_sensor:
+              Value: true
+            lidar_mount_link:
+              Value: true
+            map:
+              Value: true
+            odom:
+              Value: true
+            rgb_camera_link:
+              Value: true
+            rgb_camera_optical_link:
+              Value: true
+            rslidar:
+              Value: true
+            top:
+              Value: true
+            tracking_camera_link:
+              Value: true
+            tracking_camera_pose_frame:
+              Value: true
+          Marker Scale: 1
+          Name: TF
+          Show Arrows: true
+          Show Axes: true
+          Show Names: false
+          Tree:
+            map:
+              odom:
+                base_link:
+                  LF_WHEEL:
+                    {}
+                  LH_WHEEL:
+                    {}
+                  RF_WHEEL:
+                    {}
+                  RH_WHEEL:
+                    {}
+                  base_footprint:
+                    {}
+                  base_inertia:
+                    {}
+                  imu_link:
+                    imu_sensor:
+                      {}
+                  lidar_mount_link:
+                    {}
+                  rgb_camera_link:
+                    rgb_camera_optical_link:
+                      {}
+                  rslidar:
+                    {}
+                  top:
+                    {}
+                  tracking_camera_link:
+                    tracking_camera_pose_frame:
+                      {}
+          Update Interval: 0
+          Value: true
       Enabled: true
       Name: Frames
     - Class: rviz_common/Group
@@ -241,7 +323,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 14.390595436096191
+      Distance: 12.237957954406738
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -256,7 +338,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7103981375694275
+      Pitch: 0.6903981566429138
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
       Yaw: 0.9853978157043457
