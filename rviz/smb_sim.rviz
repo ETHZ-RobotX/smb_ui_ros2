@@ -15,9 +15,9 @@ Panels:
         - /Point Clouds1/Open3D_Map1/Topic1
         - /Odometry1
         - /Odometry1/Wheel_Odom1/Topic1
-        - /Image1/Topic1
+        - /Image1
       Splitter Ratio: 0.5
-    Tree Height: 761
+    Tree Height: 584
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -95,11 +95,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_inertia:
           Alpha: 1
           Show Axes: false
@@ -142,15 +137,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        tracking_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tracking_camera_pose_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -176,8 +162,6 @@ Visualization Manager:
               Value: true
             RH_WHEEL:
               Value: true
-            base_footprint:
-              Value: true
             base_inertia:
               Value: true
             base_link:
@@ -190,6 +174,12 @@ Visualization Manager:
               Value: true
             map_o3d:
               Value: true
+            map_o3d_graph_msf_aligned:
+              Value: true
+            odom:
+              Value: true
+            odom_graph_msf:
+              Value: true
             rgb_camera_link:
               Value: true
             rgb_camera_optical_link:
@@ -198,9 +188,7 @@ Visualization Manager:
               Value: true
             top:
               Value: true
-            tracking_camera_link:
-              Value: true
-            tracking_camera_pose_frame:
+            world_graph_msf:
               Value: true
           Marker Scale: 1
           Name: TF
@@ -208,33 +196,33 @@ Visualization Manager:
           Show Axes: true
           Show Names: false
           Tree:
-            base_link:
-              LF_WHEEL:
-                {}
-              LH_WHEEL:
-                {}
-              RF_WHEEL:
-                {}
-              RH_WHEEL:
-                {}
-              base_footprint:
-                {}
-              base_inertia:
-                {}
-              imu_link:
-                imu_sensor:
+            odom:
+              base_link:
+                LF_WHEEL:
                   {}
-              lidar_mount_link:
-                rslidar:
-                  map_o3d:
+                LH_WHEEL:
+                  {}
+                RF_WHEEL:
+                  {}
+                RH_WHEEL:
+                  {}
+                base_inertia:
+                  {}
+                imu_link:
+                  imu_sensor:
                     {}
-              rgb_camera_link:
-                rgb_camera_optical_link:
-                  {}
-              top:
-                {}
-              tracking_camera_link:
-                tracking_camera_pose_frame:
+                lidar_mount_link:
+                  rslidar:
+                    map_o3d:
+                      {}
+                odom_graph_msf:
+                  world_graph_msf:
+                    map_o3d_graph_msf_aligned:
+                      {}
+                rgb_camera_link:
+                  rgb_camera_optical_link:
+                    {}
+                top:
                   {}
           Update Interval: 0
           Value: true
@@ -243,7 +231,7 @@ Visualization Manager:
           Length: 1
           Name: Lidar_Odom
           Radius: 0.20000000298023224
-          Reference Frame: map_o3d
+          Reference Frame: world_graph_msf
           Value: true
       Enabled: true
       Name: Frames
@@ -318,8 +306,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 8.916324615478516
-            Min Value: -1.8736248016357422
+            Max Value: 8.114476203918457
+            Min Value: -1.125909447669983
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -348,17 +336,17 @@ Visualization Manager:
           Use Fixed Frame: true
           Use rainbow: true
           Value: true
-        - Alpha: 0.800000011920929
+        - Alpha: 0.4000000059604645
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 10
-            Min Value: -10
+            Max Value: 8.152134895324707
+            Min Value: -2.8512415885925293
             Value: true
           Axis: Z
           Channel Name: intensity
           Class: rviz_default_plugins/PointCloud2
-          Color: 255; 255; 255
-          Color Transformer: Intensity
+          Color: 0; 255; 255
+          Color Transformer: FlatColor
           Decay Time: 0
           Enabled: true
           Invert Rainbow: false
@@ -370,7 +358,7 @@ Visualization Manager:
           Position Transformer: XYZ
           Selectable: true
           Size (Pixels): 3
-          Size (m): 0.019999999552965164
+          Size (m): 0.07999999821186066
           Style: Flat Squares
           Topic:
             Depth: 5
@@ -506,7 +494,7 @@ Visualization Manager:
           Buffer Length: 1
           Class: rviz_default_plugins/Path
           Color: 255; 209; 0
-          Enabled: true
+          Enabled: false
           Head Diameter: 0.30000001192092896
           Head Length: 0.20000000298023224
           Length: 0.30000001192092896
@@ -529,7 +517,7 @@ Visualization Manager:
             History Policy: Keep Last
             Reliability Policy: Reliable
             Value: /dlio/odom_node/path
-          Value: true
+          Value: false
         - Alpha: 1
           Buffer Length: 1
           Class: rviz_default_plugins/Path
@@ -600,12 +588,12 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Best Effort
-        Value: /camera
+        Value: /rgb_camera/image_raw
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: map_o3d
+    Fixed Frame: world_graph_msf
     Frame Rate: 30
   Name: root
   Tools:
@@ -648,25 +636,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 12.411498069763184
+      Distance: 10
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -3.8572349548339844
-        Y: 1.2621872425079346
-        Z: 1.2247954607009888
-      Focal Shape Fixed Size: true
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7299989461898804
+      Pitch: 0.7853981852531433
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 2.6713149547576904
+      Yaw: 0.7853981852531433
     Saved:
       - Class: rviz_default_plugins/Orbit
         Distance: 5.02456521987915
@@ -691,12 +679,12 @@ Visualization Manager:
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1376
+  Height: 1136
   Hide Left Dock: false
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001e3000004c2fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730200000780000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000037c000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006501000003bf000001400000001600ffffff000000010000010f000004c2fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000004c2000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004dd0000003efc0100000002fb0000000800540069006d00650100000000000004dd0000026600fffffffb0000000800540069006d00650100000000000004500000000000000000000002f4000004c200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001e3000003d2fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000005fb000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000002cb000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d006100670065010000030e000001010000001600ffffff000000010000010f000003d2fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003d2000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004dd0000003efc0100000002fb0000000800540069006d00650100000000000004dd0000026600fffffffb0000000800540069006d00650100000000000004500000000000000000000002f4000003d200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -706,5 +694,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1245
-  X: 1315
+  X: 675
   Y: 27
